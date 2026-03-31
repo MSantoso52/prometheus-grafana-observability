@@ -127,7 +127,7 @@ The prometheus.yml file is the central configuration heart of the Prometheus ser
 	...
 	```
 	From above result minio is scarped by prometheus with:<br>
-	1. "id="/system.slice/docker-0bb4502d824db615fe27bc55124ff1586f47bcb6efd35425dff11bda245ee70c.scope"
-	2. instance="cadvisor:8080"
-	3. job="docker"
+	- "id="/system.slice/docker-0bb4502d824db615fe27bc55124ff1586f47bcb6efd35425dff11bda245ee70c.scope"
+	- instance="cadvisor:8080"
+	- job="docker"
 	
