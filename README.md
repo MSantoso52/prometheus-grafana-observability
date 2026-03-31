@@ -127,7 +127,7 @@ The prometheus.yml file is the central configuration heart of the Prometheus ser
 	905fc4f002d8   gcr.io/cadvisor/cadvisor:latest   "/usr/bin/cadvisor -…"   22 hours ago   Up 20 minutes (healthy)     0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp                       observability-cadvisor-1
 	...
 	```
-	From above result minio is scarped by prometheus with:<br>
+	From above result minio is scraped by prometheus with:<br>
 	- "id="/system.slice/docker-0bb4502d824db615fe27bc55124ff1586f47bcb6efd35425dff11bda245ee70c.scope"
 	- instance="cadvisor:8080"
 	- job="docker"
