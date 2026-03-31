@@ -1,4 +1,5 @@
 # Grafana-Prometheus-Cadvisor Observability
+![Grafana dashboard](cadvisor-prometheus-grafana.png)
 ## *Project Overview*
 Observability in a Docker environment acts as a high-resolution lens into a highly dynamic and fragmented system. Since containers are ephemeral and share host resources, observability is essential to identify "noisy neighbors" stealing CPU or memory and to perform "post-mortem" debugging on containers that have already crashed and disappeared. Ultimately, it shifts your strategy from simply knowing a service is down to understanding the root cause of complex bottlenecks across microservices.
 ## *Problem to be solved*
