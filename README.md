@@ -108,3 +108,26 @@ The prometheus.yml file is the central configuration heart of the Prometheus ser
 	| cpu|rate(container_cpu_usage_seconds_total{id=~"/system.slice/docker-.*.scope"}[5m])|Time Series|Monitor CPU graphically|
 	| network receive|rate(container_network_receive_bytes_total[5m])|Time Series|Monitor received data graphically|
 	| network transmit| rate(container_network_transmit_bytes_total[5m])|Time Series|Monitor transmited data graphically|
+
+	Note: the PromQL is depend on actual docker container id, instance, job scaraped by prometheus and refer docker run on system.<br>
+	```prometheus SQL
+	# Prometheus SQL
+	container_last_seen{id=~"/system.slice/docker-.*.scope"}
+	
+	# Result
+	container_last_seen{id="/system.slice/docker-0bb4502d824db615fe27bc55124ff1586f47bcb6efd35425dff11bda245ee70c.scope", instance="cadvisor:8080", job="docker"}	1774922191
+	container_last_seen{id="/system.slice/docker-905fc4f002d8c2bd26c2f6a24a76bc8da5cb5a43b1a9bbe2e93f3fe3409d44a8.scope", instance="cadvisor:8080", job="docker"}	1774922191
+	...
+	``` 
+	```bash
+	docker ps
+	CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                      PORTS                                                             NAMES
+	0bb4502d824d   quay.io/minio/minio:latest        "/usr/bin/docker-ent…"   6 weeks ago    Up 20 minutes               0.0.0.0:9000-9001->9000-9001/tcp, [::]:9000-9001->9000-9001/tcp   minio
+	905fc4f002d8   gcr.io/cadvisor/cadvisor:latest   "/usr/bin/cadvisor -…"   22 hours ago   Up 20 minutes (healthy)     0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp                       observability-cadvisor-1
+	...
+	```
+	From above result minio is scarped by prometheus with:<br>
+	1. "id="/system.slice/docker-0bb4502d824db615fe27bc55124ff1586f47bcb6efd35425dff11bda245ee70c.scope"
+	2. instance="cadvisor:8080"
+	3. job="docker"
+	
