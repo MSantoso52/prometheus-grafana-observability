@@ -207,7 +207,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total[5m])) by (image)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=~\"/system.slice/docker-.*.scope\"}[5m])) * 100",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -276,7 +276,7 @@
           "refId": "A"
         }
       ],
-      "title": "Network Receiver",
+      "title": "Network Rx",
       "type": "gauge"
     },
     {
@@ -335,7 +335,7 @@
           "refId": "A"
         }
       ],
-      "title": "Network Transmission",
+      "title": "Network Tx",
       "type": "gauge"
     },
     {
@@ -399,7 +399,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -749,6 +750,6 @@
   "timezone": "browser",
   "title": "Dockers Monitoring",
   "uid": "adlskdv",
-  "version": 78,
+  "version": 84,
   "weekStart": ""
 }
