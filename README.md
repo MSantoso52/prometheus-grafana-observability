@@ -102,7 +102,7 @@ The prometheus.yml file is the central configuration heart of the Prometheus ser
 	| :--- | :--- | :--- | :---|
 	| container|count(container_last_seen{id=~"/system.slice/docker-.*.scope"})|Stat|Count docker container actually in our system|
 	| memory|sum(container_memory_usage_bytes{id=~"/system.slice/docker-.*.scope"})|Stat|Measure memory usage|
-	| cpu|sum(rate(container_cpu_usage_seconds_total[5m])) by (image)|Stat|Measure total CPU usage|
+	| cpu|sum(rate(container_cpu_usage_seconds_total{id=~"/system.slice/docker-.*.scope"}[5m])) * 100|Stat|Measure total CPU usage|
 	| network receive|rate(container_network_receive_bytes_total[5m])|Gauge|Monitor received data|
 	| network transmit|rate(container_network_transmit_bytes_total[5m])|Gauge|Monitor transmited data|
 	| memory|container_memory_usage_bytes{id=~"/system.slice/docker-.*.scope"}|Time Series|Monitor memory graphically|
