@@ -110,7 +110,7 @@ The prometheus.yml file is the central configuration heart of the Prometheus ser
 	| network receive|rate(container_network_receive_bytes_total[5m])|Time Series|Monitor received data graphically|
 	| network transmit| rate(container_network_transmit_bytes_total[5m])|Time Series|Monitor transmited data graphically|
 
-	Note: the PromQL is depend on actual docker container id, instance, job scaraped by prometheus and refer docker run on system.<br>
+	Note: the PromQL is depend on actual docker container id, instance, job scrapped by prometheus and refer docker run on system.<br>
 	```prometheus SQL
 	# Prometheus SQL
 	container_last_seen{id=~"/system.slice/docker-.*.scope"}
